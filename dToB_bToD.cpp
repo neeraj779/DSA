@@ -51,6 +51,20 @@ void binToDec(vector<int> binary)
     cout << decimal << endl;
 }
 
+void binToDecI(int binary)
+{
+    int decimal = 0;
+    int power = 0;
+    int digit;
+    while (binary != 0)
+    {
+        digit = binary % 10;
+        decimal += digit * pow(2, power++);
+        binary /= 10;
+    }
+    cout << decimal << endl;
+}
+
 int binToDec2(int n)
 {
     bitset<4> bin(n);
@@ -63,6 +77,7 @@ int main()
     cout << decToBin(n) << endl;
     vector<int> bin = decToBin2(n);
     binToDec(bin);
-    cout << binToDec2(101);
+    cout << binToDec2(101) << endl;
+    binToDecI(101);
     return 0;
 }
