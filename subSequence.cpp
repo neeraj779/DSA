@@ -1,7 +1,7 @@
 #include <iostream>
 #include <vector>
 using namespace std;
-void subSequence(int arr[], int n, vector<int> &v, int i=0)
+void subSequence(int arr[], int n, vector<int> &v, int i = 0)
 {
     if (i == n)
     {
@@ -12,6 +12,9 @@ void subSequence(int arr[], int n, vector<int> &v, int i=0)
         cout << endl;
         return;
     }
+
+    // if (v.size() == 0)
+    //     cout << "{} " << endl;
 
     // pick the particular element in subsequence
     v.push_back(arr[i]);
