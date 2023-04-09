@@ -1,4 +1,5 @@
 #include <iostream>
+#include <map>
 using namespace std;
 
 class Node
@@ -160,6 +161,43 @@ void deleteNodeAtData(Node *&head, Node *&tail, int data)
     delete curr;
 }
 
+bool detectLoop(Node *head)
+{
+    map<Node *, bool> visited;
+    Node *temp = head;
+
+    while (temp != NULL)
+    {
+        if (visited[temp] == 1)
+            return 1;
+
+        visited[temp] = 1;
+        temp = temp->next;
+    }
+    return 0;
+}
+
+bool floydCycle(Node *head)
+{
+    if (head == NULL)
+        return 0;
+
+    Node *slow = head;
+    Node *fast = head;
+
+    while (fast != NULL || slow != NULL)
+    {
+        fast = fast->next;
+        if (fast != NULL)
+            fast = fast->next;
+        slow = slow->next;
+
+        if (slow == fast)
+            return 1;
+    }
+    return 0;
+}
+
 int main()
 {
     Node *node1 = new Node(10);
@@ -174,6 +212,8 @@ int main()
     traverse(head);
     cout << head->data << endl;
     cout << tail->data << endl;
+    tail->next = head->next;
+    cout << floydCycle(head);
 
     return 0;
 }
