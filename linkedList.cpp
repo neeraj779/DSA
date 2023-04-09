@@ -185,7 +185,7 @@ bool floydCycle(Node *head)
     Node *slow = head;
     Node *fast = head;
 
-    while (fast != NULL || slow != NULL)
+    while (fast != NULL && slow != NULL)
     {
         fast = fast->next;
         if (fast != NULL)
