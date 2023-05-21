@@ -39,3 +39,30 @@ int findMinimumCost(const string &str)
 
     return ((openBraces + 1) / 2 + (closedBraces + 1) / 2);
 }
+
+
+int findMinimumCost(const string& s) {
+  // Check if the length of the string is odd
+  if (s.size() & 1)
+    return -1;
+  
+  int open = 0; 
+  int close = 0; 
+
+  for (char t : s) {
+    if (t == '{') {
+      open++; // Increment open count for each opening brace encountered
+    } else {
+      if (open > 0) {
+        open--; // Match an opening brace with a closing brace
+      } else {
+        close++; // Increment close count for each unmatched closing brace
+      }
+    }
+  }
+
+  // Calculate the minimum number of reversals required
+  int minReversals = (open + 1) / 2 + (close + 1) / 2;
+
+  return minReversals;
+}
