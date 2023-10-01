@@ -16,9 +16,13 @@ int main()
 {
     int n;
     cin >> n;
-    for (int i = 0; i < n; ++i)
+    int res = 1;
+    cout << res;
+    for (int i = 1; i < n; ++i)
     {
-        cout << pascalTriangle(n - 1, i) << " ";
+        res = res * (n - i);
+        res = res / i;
+        cout << res << " ";
     }
     return 0;
 }
