@@ -18,6 +18,8 @@ int main()
     cin >> n;
     int res = 1;
     cout << res;
+
+    // res * (row - col) / col
     for (int i = 1; i < n; ++i)
     {
         res = res * (n - i);
